@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumit's Game Downloads</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1e1e1e;
+            color: white;
+        }
+        #login {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .games-list {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .game-button {
+            margin: 10px;
+            padding: 10px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 200px;
+        }
+        .game-button:disabled {
+            background-color: #7f8c8d;
+            cursor: not-allowed;
+        }
+        .game-content {
+            margin-top: 20px;
+        }
+        #download-btn {
+            padding: 10px 20px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login">
+        <h1>Sumit's Game Downloads</h1>
+        <p>Please login to continue:</p>
+        <input type="text" id="userId" placeholder="Enter ID">
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div class="games-list" id="games-list">
+        <h1>Welcome, Sumit The Boss!</h1>
+        <h2>Select Game:</h2>
+        <button class="game-button" onclick="selectGame('gta')">1. GTA San Andreas</button>
+        <button class="game-button" disabled>2. GTA Vice City (Coming Soon)</button>
+        <button class="game-button" disabled>3. PUBG (Coming Soon)</button>
+        <button class="game-button" disabled>4. NFS (Coming Soon)</button>
+
+        <div id="game-content" class="game-content"></div>
+    </div>
+
+    <script>
+        function login() {
+            const userId = document.getElementById('userId').value;
+            const password = document.getElementById('password').value;
+
+            if (userId === 'sumit' && password === 'sumitismyboss') {
+                document.getElementById('login').style.display = 'none';
+                document.getElementById('games-list').style.display = 'flex';
+            } else {
+                alert('Invalid login credentials!');
+            }
+        }
+
+        function selectGame(game) {
+            if (game === 'gta') {
+                document.getElementById('game-content').innerHTML = `
+                    <button id="download-btn" onclick="downloadGTA()">Download Now</button>
+                `;
+            }
+        }
+
+        function downloadGTA() {
+            window.location.href = 'https://drive.google.com/drive/folders/1OIX0c0QhObAT2p6aERL2x66rK8ErxQSF?usp=sharing';
+        }
+    </script>
+
+</body>
+</html>
